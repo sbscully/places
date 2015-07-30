@@ -1,0 +1,75 @@
+100k descriptions
+-----------------
+
+# 10 trees
+
+Number of place names found: 2357 (train) 1003 (test)
+             precision    recall  f1-score   support
+
+          0       0.88      0.95      0.91      3371
+          1       0.75      0.55      0.64      1003
+
+avg / total       0.85      0.86      0.85      4374
+
+[Finished in 556.0s]
+
+# 100 trees
+
+Number of place names found: 2357 (train) 1003 (test)
+             precision    recall  f1-score   support
+
+          0       0.90      0.95      0.92      3371
+          1       0.78      0.63      0.69      1003
+
+avg / total       0.87      0.87      0.87      4374
+
+[Finished in 555.3s]
+
+# 100 trees with bigrams
+
+Number of place names found: 2898 (train) 1291 (test)
+             precision    recall  f1-score   support
+
+          0       0.91      0.97      0.94      6442
+          1       0.76      0.52      0.62      1291
+
+avg / total       0.88      0.89      0.88      7733
+
+[Finished in 133.4s]
+
+Number of place names found: 2898 (train) 1291 (test)
+             precision    recall  f1-score   support
+
+          0       0.91      0.97      0.94      6442
+          1       0.76      0.53      0.63      1291
+
+avg / total       0.89      0.89      0.89      7733
+
+[Finished in 563.5s]
+
+1M descriptions
+---------------
+
+# 10 trees
+
+Number of place names found: 2385 (train) 1015 (test)
+             precision    recall  f1-score   support
+
+          0       0.89      0.96      0.92      3425
+          1       0.83      0.58      0.68      1015
+
+avg / total       0.87      0.88      0.87      4440
+
+[Finished in 7130.3s]
+
+# 100 trees
+
+Number of place names found: 2400 (train) 1009 (test)
+             precision    recall  f1-score   support
+
+          0       0.91      0.97      0.94      3469
+          1       0.85      0.66      0.74      1009
+
+avg / total       0.89      0.90      0.89      4478
+
+[Finished in ~7130.3s]
