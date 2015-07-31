@@ -34,7 +34,7 @@ class FullDescriptions(object):
             else:
                 yield line.split()
 
-model_fname = 'uk_full_descriptions_100k'
+model_fname = 'uk_full_descriptions_1M'
 
 # Generate word vectors and save model
 if os.path.isfile(model_fname + '.clean.vectors'):
@@ -63,15 +63,16 @@ else:
 words = []
 vectors = []
 targets = []
-for line in open('uk_geo_words_bigrams.csv'):
-    word, isgeo = line.rstrip().split(',')
-    try:
-        vector = model[word]
-        words.append(word)
-        vectors.append(vector)
-        targets.append(int(isgeo))
-    except:
-        pass
+for fname in ['uk_nongeo_corncob.csv', 'uk_geo_words_bigrams.csv', 'uk_geo_cities.csv', 'uk_geo_areas.csv']:
+    for line in open(fname):
+        word, isgeo = line.rstrip().split(',')
+        try:
+            vector = model[word]
+            words.append(word)
+            vectors.append(vector)
+            targets.append(int(isgeo))
+        except:
+            pass
 
 # pca = PCA(n_components=3)
 # components = pca.fit_transform(vectors)
@@ -125,6 +126,43 @@ classifier.fit(words_train, targets_train)
 predictions_test = classifier.predict(words_test)
 
 print(classification_report(targets_test, [round(prediction) for prediction in predictions_test]))
+
+test_words = []
+for line in open('uk_full_descriptions_10k.clean.txt'):
+    test_words += line.split(' ')
+test_words = set(test_words)
+test_vectors = []
+new_test_words = []
+for word in test_words:
+    try:
+        vector = model[word]
+        new_test_words.append(word)
+        test_vectors.append(vector)
+    except:
+        pass
+test_words = new_test_words
+test_predictions = classifier.predict(test_vectors)
+results = sorted(zip(test_words, test_predictions), key=lambda pair: pair[1])
+
+threshold = 0.8
+place_dict = {}
+for word, prediction in results:
+    if float(prediction) >= threshold:
+        place_dict[word] = 1
+
+for fname in ['uk_nongeo_corncob.csv', 'uk_geo_words_bigrams.csv', 'uk_geo_cities.csv', 'uk_geo_areas.csv']:
+    for line in open(fname):
+        word, isgeo = line.rstrip().split(',')
+        place_dict[word] = 0
+
+new_places = [place for place in place_dict.keys() if place_dict[place] != 0]
+
+with open('classifier_new_places.csv', 'wb') as output:
+    output.write("\n".join(new_places))
+
+with open('classifier_results.csv', 'wb') as output:
+    for word, prediction in results:
+        print(("%.2f " % prediction) + word, file=output)
 
 precision, recall, _ = precision_recall_curve(targets_test, predictions_test)
 

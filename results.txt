@@ -73,3 +73,49 @@ Number of place names found: 2400 (train) 1009 (test)
 avg / total       0.89      0.90      0.89      4478
 
 [Finished in ~7130.3s]
+
+# 100 trees with bigrams
+
+Number of place names found: 2930 (train) 1189 (test)
+             precision    recall  f1-score   support
+
+          0       0.94      0.96      0.95      5688
+          1       0.80      0.68      0.74      1189
+
+avg / total       0.91      0.92      0.91      6877
+
+[Finished in 7487.2s]
+
+# 100 trees with bigrams and more geo words
+
+Number of place names found: 3786 (train) 1629 (test)
+             precision    recall  f1-score   support
+
+          0       0.93      0.96      0.95      5637
+          1       0.85      0.76      0.80      1629
+
+avg / total       0.91      0.91      0.91      7266
+
+# 100 trees with bigrams and lots more geo and non geo words
+
+Number of place names found: 13228 (train) 5728 (test)
+             precision    recall  f1-score   support
+
+          0       0.94      0.94      0.94     11038
+          1       0.88      0.89      0.89      5728
+
+avg / total       0.92      0.92      0.92     16766
+
+[Finished in 116.0s]
+
+# Using a support vector classifier
+
+Number of place names found: 13228 (train) 5728 (test)
+             precision    recall  f1-score   support
+
+          0       0.94      0.93      0.93     11038
+          1       0.86      0.88      0.87      5728
+
+avg / total       0.91      0.91      0.91     16766
+
+[Finished in 105.3s]
