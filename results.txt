@@ -1,3 +1,39 @@
+# With dropout and 10 hidden neurons
+
+             precision    recall  f1-score   support
+
+          0       0.99      1.00      0.99     13201
+          1       0.94      0.76      0.84       706
+
+avg / total       0.98      0.99      0.98     13907
+
+# dropout and 100 hidden neurons
+
+             precision    recall  f1-score   support
+
+          0       0.99      1.00      0.99     13201
+          1       0.91      0.80      0.85       706
+
+avg / total       0.99      0.99      0.99     13907
+
+# dropout and 100 hidden neurons with more data
+
+             precision    recall  f1-score   support
+
+          0       0.98      0.99      0.99     13172
+          1       0.95      0.85      0.90      1656
+
+avg / total       0.98      0.98      0.98     14828
+
+# dropout and 100 hidden neurons with more data 20 iterations
+
+             precision    recall  f1-score   support
+
+          0       0.98      0.99      0.99     13172
+          1       0.94      0.86      0.90      1656
+
+avg / total       0.98      0.98      0.98     14828
+
 100k descriptions
 -----------------
 
